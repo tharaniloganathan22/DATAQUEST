@@ -1,0 +1,59 @@
+import pandas as pd
+import numpy as np  
+department_id=[7,17,8,7,1,12]
+base_salary=(59545,95261,97466,93735,56517,42974)
+department_id.sort()
+print(department_id)
+
+import pandas as pd
+import csv
+with open('EmployeeData.csv', mode ='r')as file:
+  csvFile = csv.reader(file)
+  for lines in csvFile:
+        print(lines)
+
+import pandas as pd
+# reading and printing csv file
+data = pd.read_csv('EmployeeData.csv')
+print(data.head())
+print(data.describe())
+
+import pandas as pd
+from statistics import mean
+# Read data from CSV
+df = pd.read_csv('EmployeeData.csv')
+
+# Sort data by a column
+df_sorted = df.sort_values(by='department_id')
+
+# Write sorted data back to CSV
+df_sorted.to_csv('sorted_data.csv', index=False)
+data = pd.read_csv('sorted_data.csv')
+print(data)
+b=df.groupby('department_id').sum(base_salary)
+print("sum",b)
+#data = pd.read_csv('sum_data.csv')
+#a=df.groupby('department_id').mean(net salary)
+#print("average",a)
+#c=max(a,base_salary)
+#print("max salary;",c)
+
+import pandas as pd
+from statistics import mean
+# Read data from CSV
+df = pd.read_csv('sum_data.csv')
+
+# Sort data by a column
+df_sorted = df.sort_values(by='department_id')
+a=df.groupby('department_id').mean('net salary')
+print("average",a)
+a.to_csv('netsalary.csv', index=False)
+
+#max_sal=df.groupby('department_id').max('net salary')
+#print(max('net salary'))
+
+import pandas as pd
+# Read data from CSV
+df = pd.read_csv('netsalary.csv')
+max_sal=max('net salary')
+print(max_sal)
